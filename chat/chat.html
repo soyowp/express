@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <meta charset='utf-8'>
+   
+    <title>Page Title</title>
+ <script>
+     const onClick =()=>{
+         let cont = document.getElementById('con').value;
+         const data = {"say" : cont};
+        
+         axios.post('/chat', data
+         ).then((res)=>{
+            let result = res.data; 
+            console.log(result);
+            const i = document.getElementById('say');
+            console.log(i.innerText);
+            i.innerText += result+'\n';
+         })
+         }
+ </script>
+</head>
+<body>
+    <h1>채팅페이지</h1>
+    <div id='say'></div>
+    <input type = 'text' id="con">
+    <button onClick="onClick()">전송!</button>
+</body>
+</html>
